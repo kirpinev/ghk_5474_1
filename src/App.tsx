@@ -225,7 +225,8 @@ export const App = () => {
               style={{ color: "white" }}
               className={appSt.productText}
             >
-              {refill === "Сразу на год" ? "4 000" : "400"} ₽ за год
+              {refill === "Сразу на год" ? "4 000" : "400"} ₽ за{" "}
+              {refill === "Сразу на год" ? "год" : "месяц"}
             </Typography.Text>
             <Gap size={4} />
             <Typography.Text
