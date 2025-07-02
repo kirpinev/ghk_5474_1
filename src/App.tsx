@@ -9,6 +9,7 @@ import { Gap } from "@alfalab/core-components/gap";
 import React, { useState } from "react";
 import { Tab, Tabs } from "@alfalab/core-components/tabs";
 import { SelectedId } from "@alfalab/core-components/tabs/typings";
+import { sendDataToGA } from "./utils/events.ts";
 
 export const App = () => {
   const [thxShow, setThx] = useState(LS.getItem(LSKeys.ShowThx, false));
@@ -22,12 +23,15 @@ export const App = () => {
   };
 
   const submit = () => {
-    window.gtag("event", "5474_get_sub", {
-      variant_name: "5474_1",
+    sendDataToGA({
+      is_alfa_smart: 0,
+      is_info_alfa_smart: 0,
+      payment_type: refill,
+      final_sum: refill === "Сразу на год" ? "4 000 ₽" : "400 ₽",
+    }).then(() => {
+      LS.setItem(LSKeys.ShowThx, true);
+      setThx(true);
     });
-
-    LS.setItem(LSKeys.ShowThx, true);
-    setThx(true);
   };
 
   if (thxShow) {

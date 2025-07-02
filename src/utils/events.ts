@@ -1,3 +1,5 @@
+import { SelectedId } from "@alfalab/core-components/tabs/typings";
+
 declare global {
   interface Window {
     dataLayer: unknown[];
@@ -9,7 +11,12 @@ declare global {
   }
 }
 
-type Payload = { plan_name: string };
+type Payload = {
+  is_alfa_smart: number;
+  is_info_alfa_smart: number;
+  payment_type: SelectedId;
+  final_sum: string;
+};
 
 export const sendDataToGA = async (payload: Payload) => {
   try {
@@ -19,7 +26,7 @@ export const sendDataToGA = async (payload: Payload) => {
     }-${now.getDate()} ${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`;
 
     await fetch(
-      "https://script.google.com/macros/s/AKfycbyjHKaaXH6pHem-XBGcMsFOgokl_DgRk0ZzlHFgIUMUjbdR1QO9CDErK9t3oUzM4wU_/exec",
+      "https://script.google.com/macros/s/AKfycbz5bX938i8vw8fWSv_cy9jTe37wEucFaO9nwoq1wBow_PsanoiMNmQag95kNlo0CCjWAg/exec",
       {
         redirect: "follow",
         method: "POST",
