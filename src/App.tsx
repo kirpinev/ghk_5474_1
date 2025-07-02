@@ -239,7 +239,7 @@ export const App = () => {
               style={{ color: "gray" }}
               className={appSt.productText}
             >
-              Сумма выплат — до 565 000 ₽
+              Выплаты до 565 000 ₽
             </Typography.Text>
           </div>
           <img src={arrow} alt="" height={65} />
